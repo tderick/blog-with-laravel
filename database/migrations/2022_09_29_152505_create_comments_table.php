@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('comment_at');
             $table->boolean('is_approuve')->default(false);
             $table->boolean('is_in_trash')->default(false);
+            $table->integer('post_id');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

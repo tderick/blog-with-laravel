@@ -9,6 +9,6 @@ class comments extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name','email','comment','comment_at','is-approuve','is_in_trash'
+        'name','email','comment','comment_at','is-approuve','is_in_trash','post_id'
     ];
 }
