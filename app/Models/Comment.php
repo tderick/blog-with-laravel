@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class blogCategory_Post extends Model
+class Comment extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'post_id','blog_id'
+        'name','email','comment','comment_at','is_approuve','is_in_trash','post_id'
     ];
 }
