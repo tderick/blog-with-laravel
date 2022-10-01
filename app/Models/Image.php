@@ -16,6 +16,6 @@ class Image extends Model
     ];
 
     public function feature_image(){
-        return $this->belongTo(Post::class,'foreign key');
+        return $this->belongTo(Post::class);
     }
 }

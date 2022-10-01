@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Image;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\BlogCategory;
 
 class Post extends Model
 {
@@ -17,5 +20,17 @@ class Post extends Model
 
     public function feature_image(){
         return $this->hasOne(Image::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function post(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function BlogCategory(){
+        return $this->belongToMany(BlogCategory::class);
     }
 }
