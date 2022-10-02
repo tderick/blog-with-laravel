@@ -5,10 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class blogCategory_Post extends Model
+use App\Models\Post;
+
+class Image extends Model
 {
     use HasFactory;
+
     protected $fillable=[
-        'post_id','blog_id'
+        'name','source','post_id'
     ];
+
+    public function feature_image(){
+        return $this->belongTo(Post::class);
+    }
 }
