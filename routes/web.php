@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\CKEditorController;
 
 /*
@@ -24,3 +25,9 @@ Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('cke
 
 Route::get("/admin/new-post", [PostController::class, 'index']);
 Route::post('/admin/save-post', [PostController::class, 'savePost'])->name('save-post');
+Route::get('/admin/new-blog', [BlogCategoryController::class,'newBlog'])->name('newBlog');
+Route::post('/verification', [BlogCategoryController::class,'submitVerification'])->name('verification');
+Route::get ('/listing', [BlogCategoryController::class,'listingBlog'])->name('listing');
+Route::delete('delete/{id}',[BlogCategoryController::class,'deleteBlog'])->name('delete');
+Route::post('/edit/{id}', [BlogCategoryController::class,'editBlog'])->name('edit');
+Route::post('/verificate/{id}',[BlogCategoryController::class,'editVerificate'])->name('editVerificate');

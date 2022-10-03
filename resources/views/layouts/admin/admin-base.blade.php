@@ -11,6 +11,7 @@
     @include('includes.admin.sidebar')
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
         @include('includes.admin.header')
+
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 @yield('content')
