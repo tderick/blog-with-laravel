@@ -8,13 +8,15 @@
     <div class="row">
         <div>
             <div class="card-body">
-                <form method="post" action="{{ route('save-post') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('name', $post->slug) }}" enctype="multipart/form-data">
                     @csrf
+
                     <div class="form-group">
-                        <input type="text" name="title" class="form-control" placeholder="Title" />
+                        <input type="text" name="title" class="form-control" placeholder="Title"
+                            value="{{ $post->title }}" />
                     </div>
                     <div class="form-group">
-                        <textarea class="ckeditor form-control" name="content"></textarea>
+                        <textarea class="ckeditor form-control" name="content">{{ $post->content }}</textarea>
                     </div>
                     <button type="submit">Save</button>
                 </form>
