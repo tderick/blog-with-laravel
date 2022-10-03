@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CKEditorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.admin.admin-base');
 });
+
+Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
+
+Route::get("/admin/new-post", [PostController::class, 'index']);
+Route::post('/admin/save-post', [PostController::class, 'savePost'])->name('save-post');

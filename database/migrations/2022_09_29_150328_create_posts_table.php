@@ -15,16 +15,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title');
-            $table->text('content');
-            $table->date('post_date');
-            $table->date('post_update');
+            $table->text('content')->default("");
             $table->enum('status', ['draft', 'published'])->default('draft');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->boolean('is_comment_authorize')->default(false);
-            $table->string('excerpt');
+            $table->string('excerpt')->default("");
             $table->boolean('is_in_trash')->default(false);
+            $table->timestamps();
         });
     }
 
