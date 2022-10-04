@@ -17,8 +17,12 @@ use App\Http\Controllers\CKEditorController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('layouts.admin.admin-base');
+// });
+
 Route::get('/', function () {
-    return view('layouts.admin.admin-base');
+    return view('layouts.frontend.frontend-base');
 });
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
@@ -31,3 +35,7 @@ Route::get ('/listing', [BlogCategoryController::class,'listingBlog'])->name('li
 Route::delete('delete/{id}',[BlogCategoryController::class,'deleteBlog'])->name('delete');
 Route::post('/edit/{id}', [BlogCategoryController::class,'editBlog'])->name('edit');
 Route::post('/verificate/{id}',[BlogCategoryController::class,'editVerificate'])->name('editVerificate');
+
+// frontend route
+Route::get('/home', [BlogCategoryController::class,'home'])->name('home');
+Route::get('detail/{id}', [PostController::class,'detail'])->name('detail');

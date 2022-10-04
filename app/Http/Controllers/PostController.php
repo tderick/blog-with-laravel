@@ -16,4 +16,9 @@ class PostController extends Controller
     {
         $request = $request->validate();
     }
+
+    public function detail(){
+        return view('pages.frontend.blog.blog-single');
+    }
+
 }
