@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 @endsection
 
+@section('ariane')
+    <li class="breadcrumb-item">
+        <!-- if breadcrumb is single--><span>Post</span>
+    </li>
+    <li class="breadcrumb-item active"><span>New</span></li>
+@endsection
+
 @section('content')
     <div class="row">
         <div>

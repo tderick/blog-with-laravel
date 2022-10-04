@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\Post;
+use App\Models\Image;
 
 class PostController extends Controller
 {
@@ -34,7 +35,7 @@ class PostController extends Controller
 
     public function editPostForm($slug)
     {
-        $post = Post::whereSlug($slug)->first();
+        $post = Post::whereSlug($slug)->with('feature_image')->first();
 
 
         if ($post == null) {
@@ -56,9 +57,39 @@ class PostController extends Controller
         $requestData = $request->all();
         $requestData['slug'] = Str::slug($requestData['title']);
 
-        $post = Post::whereSlug($slug)->first();
+        $post = Post::whereSlug($slug)->with('feature_image')->first();
         $post->update($requestData);
 
         return redirect('/admin/update-post/' . $post->slug . '/');
+    }
+
+    public function featureImage(Request $request, $slug)
+    {
+        $post = Post::whereSlug($slug)->with('feature_image')->first();
+
+
+        if ($request->file('image')) {
+
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('featuresImages'), $filename);
+
+            if ($post->feature_image) {
+                $featureImage = $post->feature_image;
+                $featureImage->path = $filename;
+                $featureImage->save();
+            } else {
+
+                $upload = new Image;
+                $upload->path = $filename;
+                $upload->post_id = $post->id;
+                $upload->save();
+            }
+
+
+            return redirect('/admin/update-post/' . $post->slug . '/');
+        } else {
+            abort(404);
+        }
     }
 }

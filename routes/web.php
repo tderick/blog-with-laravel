@@ -27,7 +27,6 @@ Route::get("/admin/new-post", [PostController::class, 'index'])->name('new-post'
 Route::post('/admin/create-post', [PostController::class, 'createPost'])->name('create-post');
 Route::get('/admin/update-post/{slug}/', [PostController::class, 'editPostForm']);
 Route::post('/admin/save-post/{slug}/', [PostController::class, 'save'])->name('name');
-Route::get("/admin/new-post", [PostController::class, 'index']);
 Route::post('/admin/save-post', [PostController::class, 'savePost'])->name('save-post');
 Route::get('/admin/new-blog', [BlogCategoryController::class, 'newBlog'])->name('newBlog');
 Route::post('/verification', [BlogCategoryController::class, 'submitVerification'])->name('verification');
@@ -35,3 +34,4 @@ Route::get('/listing', [BlogCategoryController::class, 'listingBlog'])->name('li
 Route::delete('delete/{id}', [BlogCategoryController::class, 'deleteBlog'])->name('delete');
 Route::post('/edit/{id}', [BlogCategoryController::class, 'editBlog'])->name('edit');
 Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'])->name('editVerificate');
+Route::post('/admin/post/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');

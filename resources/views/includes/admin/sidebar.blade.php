@@ -24,14 +24,13 @@
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
                 <svg class="nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-cursor"></use>
-                </svg> Buttons</a>
+                </svg> Category</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="buttons/buttons.html"><span class="nav-icon"></span>
-                        Buttons</a></li>
-                <li class="nav-item"><a class="nav-link" href="buttons/button-group.html"><span class="nav-icon"></span>
-                        Buttons Group</a></li>
-                <li class="nav-item"><a class="nav-link" href="buttons/dropdowns.html"><span class="nav-icon"></span>
-                        Dropdowns</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('newBlog') }}"><span class="nav-icon"></span>
+                        New</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('listing') }}"><span class="nav-icon"></span>
+                        List</a></li>
+
             </ul>
         </li>
 
@@ -68,8 +67,8 @@
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
                 </svg> Notifications</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span
-                            class="nav-icon"></span> Alerts</a></li>
+                <li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span class="nav-icon"></span>
+                        Alerts</a></li>
                 <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span
                             class="nav-icon"></span> Badge</a></li>
                 <li class="nav-item"><a class="nav-link" href="notifications/modals.html"><span
