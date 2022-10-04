@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 
-Route::get("/admin/new-post", [PostController::class, 'index']);
+Route::get("/admin/new-post", [PostController::class, 'index'])->name('new-post');
 Route::post('/admin/create-post', [PostController::class, 'createPost'])->name('create-post');
 Route::get('/admin/update-post/{slug}/', [PostController::class, 'editPostForm']);
 Route::post('/admin/save-post/{slug}/', [PostController::class, 'save'])->name('name');
