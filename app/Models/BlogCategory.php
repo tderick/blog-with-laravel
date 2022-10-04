@@ -11,7 +11,7 @@ class BlogCategory extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name','slug'
+        'name','desc','slug'
     ];
 
     public function Post(){
