@@ -8,7 +8,7 @@
 <li class="breadcrumb-item">
     <!-- if breadcrumb is single--><span>Edit</span>
 </li>
-<li class="breadcrumb-item active"><span>Category</span></li>
+<li class="breadcrumb-item active"><span>Category </span></li>
 
 @endsection
 

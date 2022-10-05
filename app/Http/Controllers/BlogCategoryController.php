@@ -53,4 +53,13 @@ class BlogCategoryController extends Controller
         $element->update($data);
         return redirect('/listing');
     }
+
+    public function home(){
+
+        $blogs=BlogCategory::all();
+        return view('pages.frontend.blog.blog-article', compact('blogs'));
+    }
+
+
+
 }

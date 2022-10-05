@@ -92,4 +92,9 @@ class PostController extends Controller
             abort(404);
         }
     }
+
+    public function detail(){
+        return view('pages.frontend.blog.blog-single');
+    }
+
 }
