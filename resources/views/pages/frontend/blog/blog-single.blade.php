@@ -12,9 +12,18 @@
 
 
 @section('content')
-<div class="col-lg-12 mb-5">
+<div class="col-lg-12 mb-5 mx-5">
+
     <div class="single-blog-item">
-        <img src="images/blog/2.jpg" alt="" class="img-fluid rounded">
+        <div  style="margin-left: 350px" >
+            @if ($blog->feature_image)
+            <img src="{{ asset('/featuresImages/' . $blog->feature_image->path) }}"  width="540" height="350" alt="..."
+             >
+            @else
+                <img width="540px" height="350" src="images/blog/2.jpg" alt="" class="img-fluid rounded">
+            @endif
+        </div>
+
 
         <div class="blog-item-content bg-white p-5">
             <div class="blog-item-meta bg-gray py-1 px-2">
@@ -23,8 +32,8 @@
                 <span class="text-black text-capitalize mr-3"><i class="ti-time mr-1"></i> 28th January</span>
             </div>
 
-            <h2 class="mt-3 mb-4"><a href="blog-single.html">Improve design with typography?</a></h2>
-            <p class="lead mb-4">Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!</p>
+            <h2 class="mt-3 mb-4"><a href="blog-single.html">{{ $blog->title }}</a></h2>
+            <p class="lead mb-4">{!!Str::limit( html_entity_decode($blog->content) ,20,'...')!!}</p>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae.</p>
 
