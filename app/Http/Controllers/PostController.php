@@ -93,8 +93,20 @@ class PostController extends Controller
         }
     }
 
-    public function detail(){
-        return view('pages.frontend.blog.blog-single');
+    public function detail($slug){
+        $blog=Post::whereSlug($slug)->first();
+        // dd($blog);
+        if ($blog) {
+            return view('pages.frontend.blog.blog-single',compact('blog'));
+        } else {
+            return 404;
+        }
     }
+
+    public function home(){
+        $blogs=Post::all();
+        return view('pages.frontend.blog.blog-article', compact('blogs'));
+    }
+
 
 }

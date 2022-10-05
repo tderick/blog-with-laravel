@@ -40,5 +40,5 @@ Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'
 Route::post('/admin/post/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
 
 // frontend route
-Route::get('/home', [BlogCategoryController::class, 'home'])->name('home');
-Route::get('detail/{id}', [PostController::class, 'detail'])->name('detail');
+Route::get('/home', [PostController::class, 'home'])->name('home');
+Route::get('detail/{slug}', [PostController::class, 'detail'])->name('detail');
