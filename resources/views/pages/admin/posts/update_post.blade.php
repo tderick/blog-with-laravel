@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <textarea class="ckeditor form-control" name="content">{{ $post->content }}</textarea>
                     </div>
-                    <button type="submit">Save</button>
+                    <button class="btn btn-primary border-0 text-white"  type="submit">Save</button>
                 </form>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 @endif
                 <form method="post" action="{{ route('featured-image', $post->slug) }}" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="image" />
+                    <input  type="file" name="image" />
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>

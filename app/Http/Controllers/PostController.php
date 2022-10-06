@@ -65,6 +65,10 @@ class PostController extends Controller
 
     public function featureImage(Request $request, $slug)
     {
+        $request->validate([
+            'image'=>'required'
+        ]);
+
         $post = Post::whereSlug($slug)->with('feature_image')->first();
 
 

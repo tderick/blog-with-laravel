@@ -21,15 +21,15 @@ use App\Http\Controllers\CKEditorController;
 //     return view('layouts.admin.admin-base');
 // });
 
-Route::get('/', function () {
-    return view('layouts.frontend.frontend-base');
-});
+// Route::get('/', function () {
+//     return view('layouts.frontend.frontend-base');
+// });
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 
 Route::get("/admin/new-post", [PostController::class, 'index'])->name('new-post');
 Route::post('/admin/create-post', [PostController::class, 'createPost'])->name('create-post');
-Route::get('/admin/update-post/{slug}/', [PostController::class, 'editPostForm']);
+Route::get('/admin/update-post/{slug}/', [PostController::class, 'editPostForm'])->name('update');
 Route::post('/admin/save-post/{slug}/', [PostController::class, 'save'])->name('name');
 Route::get('/admin/new-blog', [BlogCategoryController::class, 'newBlog'])->name('newBlog');
 Route::post('/verification', [BlogCategoryController::class, 'submitVerification'])->name('verification');
@@ -40,5 +40,5 @@ Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'
 Route::post('/admin/post/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
 
 // frontend route
-Route::get('/home', [PostController::class, 'home'])->name('home');
+Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('detail/{slug}', [PostController::class, 'detail'])->name('detail');
