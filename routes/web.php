@@ -27,18 +27,26 @@ use App\Http\Controllers\CKEditorController;
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 
-Route::get("/admin/new-post", [PostController::class, 'index'])->name('new-post');
-Route::post('/admin/create-post', [PostController::class, 'createPost'])->name('create-post');
-Route::get('/admin/update-post/{slug}/', [PostController::class, 'editPostForm'])->name('update');
-Route::post('/admin/save-post/{slug}/', [PostController::class, 'save'])->name('name');
-Route::get('/admin/new-blog', [BlogCategoryController::class, 'newBlog'])->name('newBlog');
-Route::post('/verification', [BlogCategoryController::class, 'submitVerification'])->name('verification');
-Route::get('/listing', [BlogCategoryController::class, 'listingBlog'])->name('listing');
-Route::delete('delete/{id}', [BlogCategoryController::class, 'deleteBlog'])->name('delete');
-Route::post('/edit/{id}', [BlogCategoryController::class, 'editBlog'])->name('edit');
-Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'])->name('editVerificate');
-Route::post('/admin/post/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
+Route::prefix('admin')->group(function () {
+
+    Route::prefix('post')->group(function(){
+        Route::get('/new-post', [PostController::class, 'index'])->name('new-post');
+        Route::post('/create-post', [PostController::class, 'createPost'])->name('create-post');
+        Route::get('/update-post/{slug}/', [PostController::class, 'editPostForm'])->name('update');
+        Route::post('/save-post/{slug}/', [PostController::class, 'save'])->name('name');
+        Route::post('/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
+    });
+
+    Route::prefix('category')->group(function(){
+        Route::get('/new-category', [BlogCategoryController::class, 'newCategory'])->name('newCategory');
+        Route::post('/verification', [BlogCategoryController::class, 'submitVerification'])->name('verification');
+        Route::get('/listing', [BlogCategoryController::class, 'listingCategory'])->name('listing');
+        Route::delete('delete/{id}', [BlogCategoryController::class, 'deleteCategory'])->name('delete');
+        Route::post('/edit/{id}', [BlogCategoryController::class, 'editCategory'])->name('edit');
+        Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'])->name('editVerificate');
+    });
+});
 
 // frontend route
-Route::get('/', [PostController::class, 'home'])->name('home');
-Route::get('detail/{slug}', [PostController::class, 'detail'])->name('detail');
+Route::get('post/{slug}', [PostController::class, 'detail'])->name('detail');
+Route::get('/', [PostController::class, 'postList'])->name('postList');

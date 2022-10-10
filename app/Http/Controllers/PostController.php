@@ -30,7 +30,7 @@ class PostController extends Controller
 
         $post = Post::create($requestData);
 
-        return redirect('/admin/update-post/' . $post->slug . '/');
+        return redirect('/admin/post/update-post/' . $post->slug . '/');
     }
 
     public function editPostForm($slug)
@@ -60,7 +60,7 @@ class PostController extends Controller
         $post = Post::whereSlug($slug)->with('feature_image')->first();
         $post->update($requestData);
 
-        return redirect('/admin/update-post/' . $post->slug . '/');
+        return redirect('/admin/post/update-post/' . $post->slug . '/');
     }
 
     public function featureImage(Request $request, $slug)
@@ -91,25 +91,25 @@ class PostController extends Controller
             }
 
 
-            return redirect('/admin/update-post/' . $post->slug . '/');
+            return redirect('/admin/post/update-post/' . $post->slug . '/');
         } else {
             abort(404);
         }
     }
 
     public function detail($slug){
-        $blog=Post::whereSlug($slug)->first();
-        // dd($blog);
-        if ($blog) {
-            return view('pages.frontend.blog.blog-single',compact('blog'));
+        $post=Post::whereSlug($slug)->first();
+        // dd($post);
+        if ($post) {
+            return view('pages.frontend.post.post-single',compact('post'));
         } else {
             return 404;
         }
     }
 
-    public function home(){
-        $blogs=Post::all();
-        return view('pages.frontend.blog.blog-article', compact('blogs'));
+    public function postList(){
+        $posts=Post::all();
+        return view('pages.frontend.post.post-list', compact('posts'));
     }
 
 

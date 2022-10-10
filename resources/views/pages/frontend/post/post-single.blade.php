@@ -13,8 +13,8 @@
                             <div class="col-lg-12 mb-5">
                                 <div class="single-blog-item">
                                     <div  >
-                                        @if ($blog->feature_image)
-                                        <img src="{{ asset('/featuresImages/' . $blog->feature_image->path) }}" width="730" height="500" alt="..."
+                                        @if ($post->feature_image)
+                                        <img src="{{ asset('/featuresImages/' . $post->feature_image->path) }}" width="730" height="500" alt="..."
                                         >
                                         @else
                                             <img width="730px" height="500" src="{{ asset('../../images/blog/2.jpg') }}" alt="" class="img-fluid rounded">
@@ -29,8 +29,8 @@
                                             <span class="text-black text-capitalize mr-3"><i class="ti-time mr-1"></i> 28th January</span>
                                         </div>
 
-                                        <h2 class="mt-3 mb-4"><a href="blog-single.html">{{ $blog->title }}</a></h2>
-                                        <p class="lead mb-4">{!!( html_entity_decode($blog->content))!!}</p>
+                                        <h2 class="mt-3 mb-4">{{ $post->title }}</h2>
+                                        <p class="lead mb-4">{!!( html_entity_decode($post->content))!!}</p>
                                         <div class="tag-option mt-5 clearfix">
                                             <ul class="float-left list-inline">
                                                 <li>Tags:</li>

@@ -31,7 +31,7 @@
 		  <div class="collapse navbar-collapse text-center" id="navbarsExample09">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="{{ route('postList') }}">Home <span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
 		  </div>
