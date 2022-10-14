@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Auth\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +54,9 @@ Route::middleware(['auth'])->group(function(){
 });
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/authentification',[LoginController::class,'authentificate'])->name('authentification');
-Route::get('/register',[LoginController::class,'register'])->name('register');
-Route::post('/create-account',[LoginController::class,'verificateAccount'])->name('verificateAccount');
-
+Route::get('/register',[RegisterController::class,'register'])->name('register');
+Route::post('/create-account',[RegisterController::class,'verificateAccount'])->name('verificateAccount');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 // frontend route
 Route::get('post/{slug}', [PostController::class, 'detail'])->name('detail');

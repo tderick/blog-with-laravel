@@ -37,12 +37,9 @@
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
                         </svg></span>
-                      <input class="form-control" type="password" placeholder="Repeat password" name="password">
+                      <input class="form-control" type="password" placeholder="Repeat password" name="password_confirmation">
                     </div>
-                    {{-- <form action="{{ route('createAccount') }}" method="POST"> --}}
-                      {{-- @csrf --}}
                       <button class="btn btn-block btn-success" type="submit">Create Account</button>
-                    {{-- </form> --}}
                 </form>
 
                 </div>

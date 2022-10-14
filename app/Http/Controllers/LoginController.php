@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+// use Illuminate\Support\Facades\Logout;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -32,26 +32,10 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        User::logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect("/login");
-    }
-
-    public function register(){
-        return view('pages.admin.authentification.register');
-    }
-
-    public function verificateAccount( Request $request){
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email',
-            'password'=>'required',
-        ]);
-        $data=$request->all();
-        // dd($data);
-        User::create($data);
-        return redirect('admin/post/new-post');
     }
 
 }
