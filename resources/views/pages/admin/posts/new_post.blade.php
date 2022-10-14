@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <textarea class="ckeditor form-control" name="content"></textarea>
                     </div>
-                    <button type="submit">Save</button>
+                    <button class="btn btn-primary border-0 text-white" type="submit">Save</button>
                 </form>
             </div>
         </div>
