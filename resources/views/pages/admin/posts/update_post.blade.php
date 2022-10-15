@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <textarea class="ckeditor form-control" name="content">{{ $post->content }}</textarea>
                     </div>
-                    <button class="btn btn-primary border-0 text-white"  type="submit">Save</button>
+                    <button class="btn btn-primary border-0 text-white" type="submit">Save</button>
                 </form>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 @endif
                 <form method="post" action="{{ route('featured-image', $post->slug) }}" enctype="multipart/form-data">
                     @csrf
-                    <input  type="file" name="image" />
+                    <input type="file" name="image" />
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
@@ -53,6 +53,34 @@
             </div>
         </div>
     </div>
+
+    {{-- <div class="card mb-4 m-3">
+        <div class="card">
+            <div class="card-header">
+                Categories
+            </div>
+            <div class="card-body">
+
+
+                <form method="post" action="{{ route('featured-image', $post->slug) }}" enctype="multipart/form-data">
+                    @csrf
+
+                    @foreach ($categories as $category)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ $category->name }}
+                            </label>
+                        </div>
+                    @endforeach
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+        </div>
+    </div> --}}
 @endsection
 
 @section('scripts')

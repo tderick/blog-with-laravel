@@ -16,7 +16,8 @@
             <ul class="nav-group-items">
                 <li class="nav-item"><a class="nav-link" href="{{ route('new-post') }}"><span class="nav-icon"></span>
                         New</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin-posts-list') }}"><span
+                            class="nav-icon"></span>
                         List</a></li>
 
             </ul>
@@ -26,7 +27,8 @@
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-cursor"></use>
                 </svg> Category</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{ route('newCategory') }}"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('newCategory') }}"><span
+                            class="nav-icon"></span>
                         New</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('listing') }}"><span class="nav-icon"></span>
                         List</a></li>

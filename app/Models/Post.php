@@ -18,15 +18,23 @@ class Post extends Model
     ];
 
 
-    public function feature_image(){
+    public function feature_image()
+    {
         return $this->hasOne(Image::class);
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function BlogCategory(){
+    public function post()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function BlogCategory()
+    {
         return $this->belongToMany(BlogCategory::class);
     }
 

@@ -10,56 +10,53 @@ use App\Models\BlogCategory;
 class BlogCategoryController extends Controller
 {
 
-    public function newCategory(){
+    public function newCategory()
+    {
         return view('pages.admin.category.new_category');
     }
 
-    public function submitVerification(Request $request){
+    public function submitVerification(Request $request)
+    {
         $request->validate([
-            'name'=> 'required|max:20',
-            'desc'=> 'required|max:200',
+            'name' => 'required|max:20',
+            'desc' => 'required|max:200',
         ]);
 
-        $data= $request->all();
+        $data = $request->all();
         $data['slug'] = Str::slug($data['name'], '-');
-        // dd($slug);
         BlogCategory::create($data);
-        return view('pages.blog.new_blog');
+        return redirect()->route('newCategory');
     }
 
-    public function listingCategory(){
-        $categories=BlogCategory::all();
+    public function listingCategory()
+    {
+        $categories = BlogCategory::all();
         return view('pages.admin.category.listing_categories', compact('categories'));
     }
 
-    public function deleteCategory($id){
-        $cat=BlogCategory::findOrFail($id);
+    public function deleteCategory($id)
+    {
+        $cat = BlogCategory::findOrFail($id);
         $cat->delete($id);
-        return redirect('/listing');
+        return redirect()->route('listing');
     }
 
-    public function editCategory($id){
-        $category=BlogCategory::findOrFail($id);
-        return view('pages.admin.category.edit_category',compact('category'));
+    public function editCategory($id)
+    {
+        $category = BlogCategory::findOrFail($id);
+        return view('pages.admin.category.edit_category', compact('category'));
     }
 
-    public function editVerificate( Request $request, $id){
+    public function editVerificate(Request $request, $id)
+    {
         $request->validate([
-            'name'=> 'required|max:20',
-            'desc'=> 'required|max:200',
+            'name' => 'required|max:20',
+            'desc' => 'required|max:200',
         ]);
-        $data= $request->all();
+        $data = $request->all();
         $data['slug'] = Str::slug($data['name'], '-');
-        $element=BlogCategory::findOrFail($id);
+        $element = BlogCategory::findOrFail($id);
         $element->update($data);
-        return redirect('/listing');
+        return redirect()->route('listing');;
     }
-
-    // public function index(){
-
-    //     return redirect('pages.frontend.blog.blog-article', [
-    //         'id' => BlogCategory::table('id')->paginate(1)
-    //     ]);
-    // }
-
 }
