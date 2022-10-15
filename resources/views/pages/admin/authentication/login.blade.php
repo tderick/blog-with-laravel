@@ -9,7 +9,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
 
-            <form action="{{ route('authentification') }}" method="POST">
+            <form action="{{ route('authentication') }}" method="POST">
             @csrf
             {{-- @method('get') --}}
               <div class="card-group d-block d-md-flex row">

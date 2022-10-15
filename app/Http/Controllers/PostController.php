@@ -30,7 +30,7 @@ class PostController extends Controller
 
         $post = Post::create($requestData);
 
-        return redirect('/admin/post/update-post/' . $post->slug . '/');
+        return redirect()->route('update-post', $post->slug);
     }
 
     public function editPostForm($slug)
@@ -60,13 +60,13 @@ class PostController extends Controller
         $post = Post::whereSlug($slug)->with('feature_image')->first();
         $post->update($requestData);
 
-        return redirect('/admin/post/update-post/' . $post->slug . '/');
+        return redirect()->route('update-post', $post->slug);;
     }
 
     public function featureImage(Request $request, $slug)
     {
         $request->validate([
-            'image'=>'required'
+            'image' => 'required'
         ]);
 
         $post = Post::whereSlug($slug)->with('feature_image')->first();
@@ -77,6 +77,7 @@ class PostController extends Controller
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('featuresImages'), $filename);
+
 
             if ($post->feature_image) {
                 $featureImage = $post->feature_image;
@@ -89,28 +90,25 @@ class PostController extends Controller
                 $upload->post_id = $post->id;
                 $upload->save();
             }
-
-
-            return redirect('/admin/post/update-post/' . $post->slug . '/');
+            return redirect()->route('update-post', $post->slug);;
         } else {
             abort(404);
         }
     }
 
-    public function detail($slug){
-        $post=Post::whereSlug($slug)->first();
-        // dd($post);
+    public function detail($slug)
+    {
+        $post = Post::whereSlug($slug)->first();
         if ($post) {
-            return view('pages.frontend.post.post-single',compact('post'));
+            return view('pages.frontend.post.post-single', compact('post'));
         } else {
             return 404;
         }
     }
 
-    public function postList(){
-        $posts=Post::all();
+    public function postList()
+    {
+        $posts = Post::all();
         return view('pages.frontend.post.post-list', compact('posts'));
     }
-
-
 }
