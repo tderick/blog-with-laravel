@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Image;
 
@@ -23,13 +23,12 @@ class PostController extends Controller
                 "content" => "required"
             ]
         );
-
         $requestData = $request->all();
         $requestData['slug'] = Str::slug($requestData['title']);
-
+        $user_id = Auth::id();
+        $requestData['user_id']=$user_id;
 
         $post = Post::create($requestData);
-
         return redirect('/admin/post/update-post/' . $post->slug . '/');
     }
 

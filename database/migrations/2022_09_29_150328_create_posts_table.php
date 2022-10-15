@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('excerpt')->default("");
             $table->boolean('is_in_trash')->default(false);
             $table->timestamps();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+
         });
     }
 

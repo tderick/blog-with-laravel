@@ -7,8 +7,17 @@
     <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
         <div class="container">
           <div class="row justify-content-center">
+
             <div class="col-md-6">
-              <div class="card mb-4 mx-4">
+                @if (session('errors'))
+                    @foreach (session('errors')->all() as $error )
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                 @endif
+
+              <div class="card mb-4 mx-4 mt-4">
                 <div class="card-body p-4">
                 <form action="{{ route('verificateAccount') }}" method="POST">
                     @csrf

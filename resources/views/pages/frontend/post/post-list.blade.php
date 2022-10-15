@@ -27,6 +27,7 @@
                                     </div>
 
                                     <h3 class="mt-3 mb-3"><a href="{{ route('detail',$post->slug) }}">{{ $post->title }}</a></h3>
+                                    <p class="text-muted fs-5"> {{ $post->author->name }} </p>
                                     <p class="mb-4">{!!Str::limit( html_entity_decode($post->content) ,20,'...')!!}</p>
                                     <a href="{{route('detail',$post->slug)}}" class="btn btn-small btn-primary btn-main btn-round-full">Read More</a>
                                 </div>
