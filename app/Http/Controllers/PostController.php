@@ -121,4 +121,10 @@ class PostController extends Controller
         $posts = Post::all();
         return view('pages.frontend.post.post-list', compact('posts'));
     }
+
+    public function deletePost($id){
+        $post = Post::findOrFail($id);
+        $post->delete($id);
+        return redirect()->route('admin-posts-list');
+    }
 }
