@@ -7,7 +7,7 @@
     </head>
 <body>
     @include('includes.frontend.header')
-    @include('includes.frontend.section-title')
+    @yield('titleSection')
     <div class="main-wrapper">
         @yield('content')
         @include('includes.frontend.footer')

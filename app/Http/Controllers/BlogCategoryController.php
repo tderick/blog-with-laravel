@@ -9,8 +9,9 @@ use App\Models\BlogCategory;
 
 class BlogCategoryController extends Controller
 {
-    public function newBlog(){
-        return view('pages.blog.new_blog');
+
+    public function newCategory(){
+        return view('pages.admin.category.new_category');
     }
 
     public function submitVerification(Request $request){
@@ -26,20 +27,20 @@ class BlogCategoryController extends Controller
         return view('pages.blog.new_blog');
     }
 
-    public function listingBlog(){
+    public function listingCategory(){
         $categories=BlogCategory::all();
-        return view('pages.blog.listing_blog', compact('categories'));
+        return view('pages.admin.category.listing_categories', compact('categories'));
     }
 
-    public function deleteBLog($id){
+    public function deleteCategory($id){
         $cat=BlogCategory::findOrFail($id);
         $cat->delete($id);
         return redirect('/listing');
     }
 
-    public function editBlog($id){
+    public function editCategory($id){
         $category=BlogCategory::findOrFail($id);
-        return view('pages.blog.edit_blog',compact('category'));
+        return view('pages.admin.category.edit_category',compact('category'));
     }
 
     public function editVerificate( Request $request, $id){
@@ -54,12 +55,11 @@ class BlogCategoryController extends Controller
         return redirect('/listing');
     }
 
-    public function home(){
+    // public function index(){
 
-        $blogs=BlogCategory::all();
-        return view('pages.frontend.blog.blog-article', compact('blogs'));
-    }
-
-
+    //     return redirect('pages.frontend.blog.blog-article', [
+    //         'id' => BlogCategory::table('id')->paginate(1)
+    //     ]);
+    // }
 
 }

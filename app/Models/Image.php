@@ -11,11 +11,12 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'name','source','post_id'
+    protected $fillable = [
+        'path', 'post_id'
     ];
 
-    public function feature_image(){
+    public function feature_image()
+    {
         return $this->belongTo(Post::class);
     }
 }
