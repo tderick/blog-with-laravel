@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 use App\Models\Post;
 use App\Models\Image;
+use App\Models\BlogCategory;
 
 class PostController extends Controller
 {
@@ -37,12 +38,19 @@ class PostController extends Controller
     {
         $post = Post::whereSlug($slug)->with('feature_image')->first();
 
+        $categories = BlogCategory::all();
 
         if ($post == null) {
             abort(404, 'Page not found');
         } else {
-            return view('pages.admin.posts.update_post', compact('post'));
+            return view('pages.admin.posts.update_post', compact(['post', 'categories']));
         }
+    }
+
+    public function adminPostList()
+    {
+        $posts = Post::all();
+        return view('pages.admin.posts.list_posts', compact('posts'));
     }
 
     public function save(Request $request, $slug)
@@ -56,6 +64,8 @@ class PostController extends Controller
 
         $requestData = $request->all();
         $requestData['slug'] = Str::slug($requestData['title']);
+
+
 
         $post = Post::whereSlug($slug)->with('feature_image')->first();
         $post->update($requestData);

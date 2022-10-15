@@ -8,29 +8,28 @@
     <li class="breadcrumb-item">
         <!-- if breadcrumb is single--><span>List</span>
     </li>
-    <li class="breadcrumb-item active"><span>Category</span></li>
+    <li class="breadcrumb-item active"><span>Posts</span></li>
 @endsection
 
 @section('content')
     <div>
-        @foreach ($categories as $category)
+        @foreach ($posts as $post)
             <div class="list-group mb-3">
                 <div href="#" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{ $category->name }}</h5>
+                        <h5 class="mb-1">{{ $post->title }}</h5>
                     </div>
-                    <p class="mb-1">{{ $category->desc }}</p>
+
                     <div class="mt-3 d-flex justify-content-start">
 
                         <div class="p-2">
-                            <form action="{{ route('edit', $category->id) }}" method="POST">
-                                @csrf
-                                <button class="border-0 px-4 py-1 text-white mx-3 "
-                                    style="background-color: rgb(23, 162, 184)">Edit</button>
-                            </form>
+
+                            <a class="border-0 px-4 py-1 text-white mx-3 btn" href="{{ route('update-post', $post->slug) }}"
+                                style="background-color: rgb(23, 162, 184)">Edit</a>
+
                         </div>
                         <div class="p-2">
-                            <form action="{{ route('delete', $category->id) }}" method="POST">
+                            <form action="{{ route('delete', $post->slug) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button class="border-0 px-3 py-1 text-white"

@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update-post/{slug}/', [PostController::class, 'editPostForm'])->name('update-post');
             Route::post('/save-post/{slug}/', [PostController::class, 'save'])->name('name');
             Route::post('/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
+            Route::get('/list-posts/', [PostController::class, 'adminPostList'])->name('admin-posts-list');
         });
 
         Route::prefix('category')->group(function () {

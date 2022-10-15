@@ -25,7 +25,7 @@ class BlogCategoryController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($data['name'], '-');
         BlogCategory::create($data);
-        return view('pages.blog.new_blog');
+        return redirect()->route('newCategory');
     }
 
     public function listingCategory()
