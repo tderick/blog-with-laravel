@@ -29,11 +29,10 @@
 
                         </div>
                         <div class="p-2">
-                            <form action="{{ route('delete', $post->slug) }}" method="POST">
+                            <form action="{{ route('delete-post', $post->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button class="border-0 px-3 py-1 text-white"
-                                    style="background-color: rgb(252, 25, 17)">Delete</button>
+                                <button class="border-0 px-3 py-1 text-white" style="background-color: rgb(252, 25, 17)">Delete</button>
                             </form>
                         </div>
                     </div>

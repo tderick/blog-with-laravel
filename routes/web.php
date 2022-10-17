@@ -34,13 +34,14 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/save-post/{slug}/', [PostController::class, 'save'])->name('name');
             Route::post('/feature-image/{slug}', [PostController::class, 'featureImage'])->name('featured-image');
             Route::get('/list-posts/', [PostController::class, 'adminPostList'])->name('admin-posts-list');
+            Route::delete('delete/{id}', [PostController::class, 'deletePost'])->name('delete-post');
         });
 
         Route::prefix('category')->group(function () {
             Route::get('/new-category', [BlogCategoryController::class, 'newCategory'])->name('newCategory');
             Route::post('/verification', [BlogCategoryController::class, 'submitVerification'])->name('verification');
             Route::get('/listing', [BlogCategoryController::class, 'listingCategory'])->name('listing');
-            Route::delete('delete/{id}', [BlogCategoryController::class, 'deleteCategory'])->name('delete');
+            Route::delete('delete/{id}', [BlogCategoryController::class, 'deleteCategory'])->name('delete-category');
             Route::post('/edit/{id}', [BlogCategoryController::class, 'editCategory'])->name('edit');
             Route::post('/verificate/{id}', [BlogCategoryController::class, 'editVerificate'])->name('editVerificate');
         });

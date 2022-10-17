@@ -30,7 +30,7 @@
                             </form>
                         </div>
                         <div class="p-2">
-                            <form action="{{ route('delete', $category->id) }}" method="POST">
+                            <form action="{{ route('delete-category', $category->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button class="border-0 px-3 py-1 text-white"

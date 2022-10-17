@@ -13,8 +13,8 @@ use App\Models\BlogCategory;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title', 'content', 'post_date', 'post_update', 'status', 'slug', 'is_comment_authorize', 'excerpt', 'is_in_trash'
+    protected $fillable=[
+        'title','content','post_date','post_update','status','slug','is_comment_authorize','excerpt','is_in_trash', 'user_id'
     ];
 
 
@@ -36,5 +36,9 @@ class Post extends Model
     public function BlogCategory()
     {
         return $this->belongToMany(BlogCategory::class);
+    }
+
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

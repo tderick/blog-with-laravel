@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\BlogCategory;
@@ -24,10 +24,10 @@ class PostController extends Controller
                 "content" => "required"
             ]
         );
-
         $requestData = $request->all();
         $requestData['slug'] = Str::slug($requestData['title']);
-
+        $user_id = Auth::id();
+        $requestData['user_id']=$user_id;
 
         $post = Post::create($requestData);
 
@@ -120,5 +120,11 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view('pages.frontend.post.post-list', compact('posts'));
+    }
+
+    public function deletePost($id){
+        $post = Post::findOrFail($id);
+        $post->delete($id);
+        return redirect()->route('admin-posts-list');
     }
 }
